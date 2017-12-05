@@ -1,11 +1,24 @@
 package com.project.maven.GUI03;
 
 import static org.junit.Assert.*;
+import java.util.Random;
+import java.util.logging.Logger;
 
 import org.junit.Test;
 
+/**
+ * Istället för random kan man hårdkoda men jag vet inte vad 1 kommer ifrån. Kan använda de här testerna för inlämningen.
+ * 
+ * Log ligger också inne.
+ * 
+ * @author erica
+ *
+ */
+
 public class ConversonDegreesRadiansTest {
 	ConversonDegreesRadians cdr = new ConversonDegreesRadians();
+	Random random = new Random();
+	private static final Logger LOG = Logger.getLogger(ConversonDegreesRadians.class.getName());
 	
 	/**
 	 * De här två är hjälpmetoder. De skapas för att  göra det enklare? Slippa göra det inom testmetoden?
@@ -26,13 +39,22 @@ public class ConversonDegreesRadiansTest {
 
 	@Test
 	public void testDegreesToRadians() {
-		assertEquals(degreesToRadians(3.8), cdr.convertDegreesToRadians(3.8), 0.1); //skriver jag cdr. så kommer valid förslag fram
-		
+		double randomValue = 0.0;
+		for (int i = 0; i < 10; i++) {
+			randomValue = random.nextDouble()*100;
+			LOG.info("Testing the method convertDegreesToRadians with value: " +randomValue);
+			assertEquals(degreesToRadians(randomValue), cdr.convertDegreesToRadians(randomValue), 0.1); //skriver jag cdr. så kommer valid förslag fram
+		}	
 	}
 	
 	@Test
 	public void testRadiansToDegrees() {
-		assertEquals(radiansToDegrees(3.8), cdr.convertRadiansToDegrees(3.8), 01);
+		double randomValue = 0.0;
+		for (int i = 0; i < 10; i++) {
+			randomValue = random.nextDouble()*100;
+			LOG.info("Testing the method convertRadiansToDegrees with value: " +randomValue);
+			assertEquals(radiansToDegrees(randomValue), cdr.convertRadiansToDegrees(randomValue), 01);
 	}
 
+}
 }
